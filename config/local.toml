@@ -1,0 +1,3 @@
+Env="local"
+BotToken="5690114746:AAHNMsM9ushKyQllVet77KuI0LZQ9qPiDR0"
+Dsn="root:Miracle.1208@tcp(127.0.0.1:3307)/kolesaProject?charset=utf8mb4&parseTime=True&loc=Local"
