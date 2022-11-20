@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"kolesaGoBot/cmd/bot"
+	"kolesaGoBot/cmd/message"
+
 	"kolesaGoBot/internal/models"
 	"log"
 
@@ -18,6 +20,8 @@ type Config struct {
 }
 
 func main() {
+	go message.RunServer(":8001")
+
 	configPath := flag.String("config", "", "Path to config file")
 	flag.Parse()
 
