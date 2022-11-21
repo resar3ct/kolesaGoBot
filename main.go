@@ -20,7 +20,7 @@ type Config struct {
 }
 
 func main() {
-	go message.RunServer(":8001")
+	// go message.RunServer(":8001")
 
 	configPath := flag.String("config", "", "Path to config file")
 	flag.Parse()
@@ -42,6 +42,12 @@ func main() {
 		Bot:   bot.InitBot(cfg.BotToken),
 		Users: &models.UserModel{Db: db},
 	}
+
+	messageBot := message.UpgradeBot{
+		Bot:   kolesaBot.Bot,
+		Users: &models.UserModel{Db: db},
+	}
+	go messageBot.RunServer(":8001")
 
 	kolesaBot.Bot.Handle("/start", kolesaBot.StartHandler)
 
