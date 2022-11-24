@@ -52,7 +52,7 @@ func (bot *UpgradeBot) SendToAllUsers(title string, body string) {
 	users, _ := bot.Users.GetAllUsers()
 
 	for _, v := range users {
-		sendTextToTelegramChat(int(v.ChatId), title)
+		sendTextToTelegramChat(int(v.ChatId), title+"\n"+body)
 		log.Println(v.ChatId)
 	}
 }
