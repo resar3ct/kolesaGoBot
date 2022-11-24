@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+
 	"kolesaGoBot/cmd/bot"
 	"kolesaGoBot/cmd/message"
 
@@ -14,14 +15,12 @@ import (
 )
 
 type Config struct {
-	Env      string
-	BotToken string
-	Dsn      string
+	Env         string
+	BotToken    string
+	Dsn         string
 }
 
 func main() {
-	go message.RunServer(":8001")
-
 	configPath := flag.String("config", "", "Path to config file")
 	flag.Parse()
 
@@ -43,7 +42,15 @@ func main() {
 		Users: &models.UserModel{Db: db},
 	}
 
+	messageBot := message.UpgradeBot{
+		Bot:   kolesaBot.Bot,
+		Users: &models.UserModel{Db: db},
+	}
+	go messageBot.RunServer(":8001")
+
 	kolesaBot.Bot.Handle("/start", kolesaBot.StartHandler)
+	kolesaBot.Bot.Handle("/habr", kolesaBot.HabrNews)
+	kolesaBot.Bot.Handle("/hero", kolesaBot.MarvelHero)
 
 	kolesaBot.Bot.Start()
 }
