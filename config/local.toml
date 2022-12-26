@@ -1,3 +1,3 @@
 Env="local"
-BotToken="5620278688:AAFnD6ix0Z90APRkBa8FavEbvengQBPg_04"
-Dsn="root:1q2w3e$R@tcp(localhost:3306)/kolesaproject?charset=utf8mb4&parseTime=True&loc=Local"
+BotToken=""
+Dsn="root:password@tcp(localhost:3306)/kolesaproject?charset=utf8mb4&parseTime=True&loc=Local"
